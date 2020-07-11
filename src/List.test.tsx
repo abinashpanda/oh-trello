@@ -1,6 +1,6 @@
 import React from 'react'
 import List from './List'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 enum Status {
@@ -30,6 +30,6 @@ describe('<List />', () => {
     const onCreateTask = jest.fn()
     render(<List name={name} tasks={[]} onCreateTask={onCreateTask} />)
     userEvent.type(screen.getByPlaceholderText(/add task/i), 'dummy{enter}')
-    expect(jest.fn()).toBeCalledWith('dummy')
+    expect(onCreateTask).toBeCalledWith('dummy')
   })
 })

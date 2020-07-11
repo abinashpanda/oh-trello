@@ -32,8 +32,8 @@ const List: React.FC<Props> = ({
 }) => {
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>) => {
-      console.log(event)
-      if (event.keyCode === 13 && onCreateTask) {
+      if (event.key === 'Enter' && onCreateTask) {
+        console.log(event.key)
         onCreateTask((event.target as HTMLInputElement).value)
         ;(event.target as HTMLInputElement).value = ''
       }
